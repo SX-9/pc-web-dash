@@ -4,6 +4,9 @@ const cors = require('cors')({ orgin: '*' });
 const port = process.argv[3] || 80;
 
 app.use(cors);
+app.get('/', (req, res) => res.json({
+    endpoints: [ '/cpu', '/ram', '/osi', ],
+}));
 app.get('/cpu', (req, res) => osu.cpu.usage().then(v => res.json(v)));
 app.get('/ram', (req, res) => osu.mem.used().then(v => res.json(v)));
 app.get('/osi', (req, res) => res.json({ 
