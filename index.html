@@ -3,15 +3,95 @@
   <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8">
-    <title>PC Web Dash | Made By SX9 On GitHub</title>
+    <title>PC Web Dash | Made By SX-9 On GitHub</title>
 		<style>
-			
+			body {
+        font-family: monospace;
+        color: green;
+        background: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        padding: 0;
+      }
+      div {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1em;
+      }
+      @media screen and (max-width: 580px) {
+        div {
+          grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        div {
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media screen and (min-width: 1070px) {
+        div {
+          grid-template-rows: 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
 		</style>
   </head>
   <body>
     <h1>PC Web Dash</h1>
+    <p>Here Are Your PC Information</p>
+    <div>
+      <fieldset>
+        <h4>CPU</h4>
+        <h1 id="cpu">0%</h1>
+      </fieldset>
+      <fieldset>
+        <h4>RAM</h4>
+        <h1 id="ram">0Mb / 0Mb</h1>
+      </fieldset>
+      <fieldset>
+        <h4>Uptime</h4>
+        <h1 id="uptime">0 Seconds</h1>
+      </fieldset>
+      <fieldset>
+        <h4>OS</h4>
+        <h1 id="os">Unknown</h1>
+      </fieldset>
+      <fieldset>
+        <h4>Hostname</h4>
+        <h1 id="name">Unknown</h1>
+      </fieldset>
+    </div>
+    <p>Made By <a href="https://sx9.is-a.dev">sx9.is-a.dev</a></p>
 		<script>
-			
+      let api = `http://${window.location.hostname}/api`;
+			setInterval(() => {
+        fetch(api + '/cpu', {
+          headers: {
+            "Bypass-Tunnel-Reminder": "true"
+          }
+        }).then(res => res.json()).then(data => document.querySelector('#cpu').innerText = data + "%");
+        fetch(api + '/ram', {
+          headers: {
+            "Bypass-Tunnel-Reminder": "true"
+          }
+        }).then(res => res.json()).then(data => document.querySelector('#ram').innerText = data.usedMemMb + "Mb / " + data.totalMemMb + "Mb");
+        fetch(api + '/osi', {
+          headers: {
+            "Bypass-Tunnel-Reminder": "true"
+          }
+        }).then(res => res.json()).then(data => {
+          document.querySelector('#uptime').innerText = data.uptime + " Seconds";
+          document.querySelector('#os').innerText = data.platform;
+          document.querySelector('#name').innerText = data.hostname;
+        });
+      }, 1000);
 		</script>
   </body>
 </html>
