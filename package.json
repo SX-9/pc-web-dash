@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tunnel": "lt -p 80 -s SUBDOMAIN-HERE",
+    "tunnel": "lt -p 80 -s sx9-pc",
     "start": "node index.js 80",
     "test": "nodemon index.js"
   },
