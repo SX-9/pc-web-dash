@@ -14,58 +14,51 @@
         align-items: center;
       }
       h1 {
-        padding: 0;
+        margin: 0.3em;
+      }
+      legend {
+        font-size: 1.5em;
       }
       div {
         width: 100vw;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr ;
         grid-template-rows: 1fr 1fr;
         gap: 1em;
       }
       @media screen and (max-width: 580px) {
         div {
-          grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
           grid-template-columns: 1fr;
         }
       }
-      @media screen and (min-width: 750px) {
-        div {
-          grid-template-rows: 1fr 1fr 1fr;
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      @media screen and (min-width: 1070px) {
+      @media screen and (max-width: 750px) {
         div {
           grid-template-rows: 1fr 1fr;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
         }
       }
 		</style>
   </head>
   <body>
     <h1>PC Web Dash</h1>
-    <p>Here Are Your PC Information</p>
+    <p>Here Are PC Information For <span id="name">Unknown</span></p>
     <div>
       <fieldset>
-        <h4>CPU</h4>
-        <h1 id="cpu">0%</h1>
-      </fieldset>
-      <fieldset>
-        <h4>RAM</h4>
-        <h1 id="ram">0Mb / 0Mb</h1>
-      </fieldset>
-      <fieldset>
-        <h4>Uptime</h4>
-        <h1 id="uptime">0 Seconds</h1>
-      </fieldset>
-      <fieldset>
-        <h4>OS</h4>
+        <legend>Platform</legend>
         <h1 id="os">Unknown</h1>
       </fieldset>
       <fieldset>
-        <h4>Hostname</h4>
-        <h1 id="name">Unknown</h1>
+        <legend>CPU</legend>
+        <h1 id="cpu">0%</h1>
+      </fieldset>
+      <fieldset>
+        <legend>RAM</legend>
+        <h1 id="ram">0Mb / 0Mb</h1>
+      </fieldset>
+      <fieldset>
+        <legend>Uptime</legend>
+        <h1 id="uptime">0 Seconds</h1>
       </fieldset>
     </div>
     <p>Made By <a href="https://sx9.is-a.dev">sx9.is-a.dev</a></p>
