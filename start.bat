@@ -6,4 +6,4 @@ color 2
 pause
 
 start npm run start
-start npm run tunnel
+start tunnel.bat
