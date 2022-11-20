@@ -1,12 +1,10 @@
 {
   "name": "pc-web-dash",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.2.1",
+  "description": "PC Web Dash",
+  "bin": "index.js",
   "scripts": {
-    "tunnel": "lt -p 80 -s sx9-pc",
-    "start": "node index.js 80",
-    "test": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
